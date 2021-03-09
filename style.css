@@ -56,6 +56,8 @@ main {
   display: flex;
   /* items wrap down to next line if too many to fit */
   flex-wrap: wrap;
+  /* horizontally center items on page */
+  justify-content: center;
 }
 
 /* movie div  */
