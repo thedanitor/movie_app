@@ -1,22 +1,146 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+
+/* custom variables */
+:root {
+  --primary-color: #22254b;
+  --secondary-color: #373b69;
+}
 
 * {
-    /* width not affected by padding or border */
-    box-sizing: border-box;
+  /* width not affected by padding or border */
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    flex-direction: column;
-    /* Centered horizontally */
-    align-items: center; 
-    /* Centered vertically on 100% viewport */
-    justify-content: center;
-    /* 100% viewport height  */
-    height: 100vh;
-    /* don't want scrollbars  */
-    overflow: hidden;
-    /* no margins  */
-    margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-color);
+  /* no margins  */
+  margin: 0;
+}
+
+header {
+  /* 1rem all around (rem = 16px) */
+  padding: 1rem;
+  display: flex;
+  /* push content all the way to the right */
+  justify-content: flex-end;
+  background-color: var(--secondary-color);
+}
+
+.search {
+  background-color: transparent;
+  /* 2px solid border  */
+  border: 2px solid var(--primary-color);
+  /* rounded corners  */
+  border-radius: 50px;
+  /* inherit font from parent */
+  font-family: inherit;
+  font-size: 1rem;
+  /* top,bottom 0.5 | sides 1 */
+  padding: 0.5rem 1rem;
+  color: #fff;
+}
+
+/* placeholder in search  */
+.search::placeholder {
+  color: #7378c5;
+}
+
+/* when search is focused */
+.search:focus {
+  outline: none;
+  background-color: var(--primary-color);
+}
+
+main {
+  display: flex;
+  /* items wrap down to next line if too many to fit */
+  flex-wrap: wrap;
+}
+
+/* movie div  */
+.movie {
+  width: 300px;
+  /* 1rem all around */
+  margin: 1rem;
+  background-color: var(--secondary-color);
+  /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  /* can position children absolute  */
+  position: relative;
+  /* hides scrollbars, keeps content in container */
+  overflow: hidden;
+  /* slightly rounded corners */
+  border-radius: 3px;
+}
+
+/* image in movie div  */
+.movie img {
+  /* full container width */
+  width: 100%;
+}
+
+.movie-info {
+  color: #eee;
+  display: flex;
+  /* vertically center */
+  align-items: center;
+  /* first item flush with start, last item flush with end, distribute rest evenly */
+  justify-content: space-between;
+  /* top | sides | bottom */
+  padding: 0.5rem 1rem 1rem;
+  /* 0.5px horizontal between characters */
+  letter-spacing: 0.5px;
+}
+
+/* h3 in movie-info div */
+.movie-info h3 {
+  /* remove top margin */
+  margin-top: 0;
+}
+
+/* span in movie-info (for rating)*/
+.movie-info span {
+  background-color: var(--primary-color);
+  /* top,bottom | sides */
+  padding: 0.25rem 0.5rem;
+  /* slightly rounded corners */
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* span in movie-info with class green */
+.movie-info span.green {
+  color: lightgreen;
+}
+/* span in movie-info with class orange */
+.movie-info span.orange {
+  color: orange;
+}
+/* span in movie-info with class red */
+.movie-info span.red {
+  color: red;
+}
+
+.overview {
+  background-color: #fff;
+  /* all around */
+  padding: 2rem;
+  /* can specify exact positioning */
+  position: absolute;
+  /* flush with left, bottom, and right */
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* not to exceed container height */
+  max-height: 100%;
+  /* move down by 101% which puts it out of view initially */
+  transform: translateY(101%);
+  /* 0.3s transition for transform property  */
+  transition: transform 0.3s ease-in;
+}
+
+/* overview when hover over movie  */
+.movie:hover .overview {
+  transform: translateY(0);
 }
